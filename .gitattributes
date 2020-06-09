@@ -1,2 +1,2 @@
 *.html files:
-*.html linguist-vendored
+*.html linguist-vendored=false
