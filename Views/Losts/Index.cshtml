@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Zadanko3.Models.Lost>
+
+@{
+    ViewData["Title"] = "Index";
+}
+zaloguj się aby móc dodawać ogłoszenia
+<h1>Index</h1>
+<form asp-controller="Losts" asp-action="Index" asp-area="" method="get">
+
+  
+    <p>
+        <label>Wyszukaj po Płci</label>
+        <select name="pleclist" asp-items="Html.GetEnumSelectList<Lost.PlecList>()" class="form-control" style="width:300px"></select>
+    </p>
+    <p>
+        <label>Wyszukaj po Województwie</label>
+        <select name="województwolist" asp-items="Html.GetEnumSelectList<Lost.WojewództwoList>()" class="form-control" style="width:300px"></select>
+    </p>
+    <input type="submit" value="Filter" />
+</form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+
+                    @Html.DisplayNameFor(model => model.Imie)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nazwisko)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Wiek)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Plec)
+                </th>
+                <th>
+                    Województwo
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Imie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nazwisko)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Wiek)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Plec)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WojewództwoLista)
+                    </td>
+                    <td>
+
+
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+
+                    </td>
+                </tr>
+
+
+
+            }
+        </tbody>
+    </table>
